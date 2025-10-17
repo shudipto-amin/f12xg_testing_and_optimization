@@ -4,8 +4,12 @@ This repo is for developing test routines for [F12-XG implementation](https://gi
 
 ## SETUP
 
-run 
-`$> bash setup.sh`
+...General details to come...
+
+### Creating systems in `systems/`
+
+Make a folder in `systems` similar to `cu_nh3`
+It needs to have only a `metadata.json` and a template input `*.tinp`
 
 ## Scripts
 
