@@ -1,0 +1,28 @@
+memory,1000,m
+gprint,orbitals
+
+geomtyp=xyz
+geometry={
+angstrom;
+5
+Cu-Nh3 rough geometry
+Cu  0.00000000000000000  0.00000000000000000  {distances}
+N   0.00000000000000000  0.00000000000000000  0.00000000000000000
+H   0.00000000000000000  0.92821394973455584 -0.37204685661644216
+H  -0.80385686061721728 -0.46410697486727792 -0.37204685661644216
+H   0.80385686061721728 -0.46410697486727792 -0.37204685661644216
+}
+set,charge=1
+basis={bases}
+
+gem_beta=[0.50,0.60,0.70,0.80,0.90,1.00,1.10,1.20,1.30,1.40,1.50,1.60,1.70,1.80,1.90,2.00,2.10,2.20,2.30,2.40,2.50,2.60,2.70,2.80,2.90]
+
+{df-hf}
+{df-mp2}
+do i=1, #gem_beta
+{df-mp2-f12,gem_beta=[gem_beta(i)],cpp_prog='DF-MP2-F12'}
+tot_ener(i) = energy
+ref_ener(i) = energr
+corr_ener(i) = tot_ener(i) - ref_ener(i)
+enddo
+table,gem_beta,tot_ener,ref_ener,corr_ener;save,file='{full_file_prefix}.csv'

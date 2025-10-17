@@ -1,0 +1,30 @@
+{
+    "calc_type" : "xg",
+    "template" : "xg.tinp",
+    "file_prefix" : "xg",
+    "bases" : {
+        "iterable" : true,
+        "subfolder": true,
+        "values" : ["aug-cc-pVDZ", "aug-cc-pVTZ"],
+        "prefix" : "{value}"
+    },
+    "gamma_set" : {
+        "iterable" : true,
+        "subfolder": true,
+        "values" : [
+            "2.40_1.40_2.40",
+            "2.40_1.40_2.15",
+            "2.40_1.40_1.90",
+            "2.40_1.40_1.65",
+            "2.40_1.40_1.40"
+        ],
+        "prefix" : "gamma_set_{value}"
+    },
+    "distances" : {
+        "iterable" : true,
+        "subfolder": false,
+        "values" : [1.9, 2.0, 2.1, 9999.0],
+        "format" : "06.3f",
+        "prefix" : "_r_{value}"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "calc_type" : "standard",
+    "template" : "standard_all_gamma.tinp",
+    "file_prefix" : "standard_all_gamma",
+    "bases" : {
+        "iterable" : true,
+        "subfolder": true,
+        "values" : ["aug-cc-pVDZ", "aug-cc-pVTZ", "aug-cc-pVQZ"],
+        "prefix" : "{value}"
+    },
+    "distances" : {
+        "iterable" : true,
+        "subfolder": false,
+        "values" : [1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.5, 2.7, 3.0, 3.5, 4.0, 5.0, 9.0, 9999.0],
+        "format" : "06.3f",
+        "prefix" : "_r_{value}"
+    },
+    "reference_outputs" : ["standard_all_gamma_r_09.000"]
+}
