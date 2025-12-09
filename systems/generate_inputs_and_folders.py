@@ -81,12 +81,26 @@ def generate_items(iterables):
         params = dict(zip(keys, combo))
         yield params
 
+clean_filename_dict = {
+        "*" : ".",
+        "(" : "_",
+        ")" : "",
+        "," : "-"
+        }
 def generate_file_paths(args, meta):
     """Yield (file_path, folder_path, kwargs) tuples for each parameter combination."""
     iterables = {k: v for k, v in meta.items() if isinstance(v, dict) and v.get("iterable")}
     working_folder = os.path.dirname(args.metadata_path)
     template_file = os.path.join(working_folder, meta['template'])
-
+    
+    def clean_filename(prefix):
+        new_prefix = ''
+        for c in prefix:
+            if c in clean_filename_dict:
+                new_prefix += clean_filename_dict[c]
+            else:
+                new_prefix += c
+        return new_prefix
     for params in generate_items(iterables):
         path_parts = [working_folder]
         file_prefix = meta["file_prefix"]
@@ -96,7 +110,7 @@ def generate_file_paths(args, meta):
             conf = iterables[key]
             fmt_value = format_value(value, conf.get("format"))
             prefix = conf.get("prefix", "{value}").format(value=fmt_value)
-
+            prefix = clean_filename(prefix)
             if conf.get("subfolder"):
                 path_parts.append(prefix)
             else:
