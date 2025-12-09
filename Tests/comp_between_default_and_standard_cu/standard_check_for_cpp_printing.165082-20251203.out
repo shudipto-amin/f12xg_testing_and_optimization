@@ -1,0 +1,1171 @@
+
+ Working directory              : /SCR1/amin/standard_check_for_cpp_printing.165082-20251203/molpro.zaNGYSF3HZ/
+ Global scratch directory       : /SCR1/amin/standard_check_for_cpp_printing.165082-20251203/molpro.zaNGYSF3HZ/
+ Wavefunction directory         : /home/linux3_i1/amin/molpro_calculations/F12XG_tests_and_optimization/main/Tests/comp_between_default_and_standard_cu/
+ Main file repository           : /SCR1/amin/standard_check_for_cpp_printing.165082-20251203/molpro.zaNGYSF3HZ/
+
+ id        : kamin
+
+ Nodes     nprocs
+ orpheus46    1
+ GA implementation: MPI file
+ GA implementation (serial work in mppx): MPI file
+
+ Using customized tuning parameters: mindgm=1; mindgv=20; mindgc=4; mindgr=1; noblas=0; minvec=7
+ default implementation of scratch files=df  
+
+
+ Variables initialized (1064), CPU time= 0.01 sec
+ memory,1000,m
+ gprint,orbitals
+ 
+ geomtyp=xyz
+ geometry={Cu}
+ set,charge=1
+ basis=aug-cc-pVTZ
+ 
+ gem_beta=[2.40]
+ 
+ {df-hf}
+ {df-mp2}
+ do i=1, #gem_beta
+ {df-mp2-f12,gem_beta=[gem_beta(i)],cpp_prog='DF-MP2-F12'}
+ tot_ener(i) = energy
+ ref_ener(i) = energr
+ corr_ener(i) = tot_ener(i) - ref_ener(i)
+ enddo
+ table,gem_beta,tot_ener,ref_ener,corr_ener;save,file='standard_all_gamma.csv'
+ Commands initialized (839), CPU time= 0.01 sec, 730 directives.
+ Default parameters read. Elapsed time= 0.12 sec
+
+ Checking input...
+ Passed
+1
+
+
+                                         ***  PROGRAM SYSTEM MOLPRO  ***
+                                       Copyright, TTI GmbH Stuttgart, 2015
+                                  Version 2025.4 linked Wed Dec  3 19:43:05 2025
+
+
+ **********************************************************************************************************************************
+ LABEL *                                                                                                                                                                 
+                                                                                         DATE: 03-Dec-25          TIME: 20:04:36  
+ **********************************************************************************************************************************
+
+ SHA1:             d48c7474e8c31dd1923e4183b496083c857874e3
+ **********************************************************************************************************************************
+
+ Memory per process:      1000 MW
+ Total memory per node:   1000 MW
+
+ GA preallocation disabled
+ GA check disabled
+
+ Variable memory set to 1000.0 MW
+
+
+ GEOMTYP         =  'XYZ'
+
+ Turning off symmetry in density fitting calculation
+ To re-enable, use 'symmetry,auto'
+
+ CHARGE          =       1.00000000                                  
+ SETTING BASIS          =    AUG-CC-PVTZ
+ GEM_BETA        =       2.40000000                                  
+
+
+ Recomputing integrals since basis changed
+
+
+ Using spherical harmonics
+
+ Library entry CU     S aug-cc-pVTZ          selected for orbital group  1
+ Library entry CU     P aug-cc-pVTZ          selected for orbital group  1
+ Library entry CU     D aug-cc-pVTZ          selected for orbital group  1
+ Library entry CU     F aug-cc-pVTZ          selected for orbital group  1
+ Library entry CU     G aug-cc-pVTZ          selected for orbital group  1
+
+
+ PROGRAM * SEWARD (Integral evaluation for generally contracted gaussian basis sets)     Author: Roland Lindh, 1990
+
+ Geometry written to block  1 of record 700
+
+ Orientation using atomic masses  
+ Molecule type: Atom
+ Rotational constants:       0.0000000      0.0000000      0.0000000 GHz  (calculated with average atomic masses)
+
+ Point group  C1  
+
+
+
+ ATOMIC COORDINATES
+
+ NR  ATOM    CHARGE       X              Y              Z
+
+   1  CU     29.00    0.000000000    0.000000000    0.000000000
+
+ NUCLEAR CHARGE:                   29
+ NUMBER OF PRIMITIVE AOS:         186
+ NUMBER OF SYMMETRY AOS:          156
+ NUMBER OF CONTRACTIONS:           93   (   93A   )
+ NUMBER OF INNER CORE ORBITALS:     5   (    5A   )
+ NUMBER OF OUTER CORE ORBITALS:     4   (    4A   )
+ NUMBER OF VALENCE ORBITALS:        6   (    6A   )
+
+
+ NUCLEAR REPULSION ENERGY .00000000
+
+ EXTRA SYMMETRY OF AOS IN SYMMETRY 1:   1 1 1 1 1 1 1 1 2 3   4 2 3 4 2 3 4 2 3 4   2 3 4 2 3 4 2 3 4 5   6 7 8 9 5 6 7 8 9 5
+                                        6 7 8 9 5 6 7 8 9 5   6 7 8 9101112131415  16101112131415161011  12131415161718192021
+                                       22232425171819202122  232425
+
+ Eigenvalues of metric
+
+         1 0.511E-03 0.511E-03 0.511E-03 0.118E-02 0.159E-01 0.159E-01 0.159E-01 0.159E-01
+
+
+ OPERATOR DM      FOR CENTER  0  COORDINATES:    0.000000    0.000000    0.000000
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       29.36       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+ PROGRAMS   *        TOTAL       INT
+ CPU TIMES  *         0.75      0.60
+ REAL TIME  *         0.99 SEC
+ DISK USED  *        29.70 MB
+ **********************************************************************************************************************************
+
+
+ Program * Restricted Hartree-Fock
+
+ Generating basis AVTZ-JKFIT
+  Atom=CU       basis=def2-QZVPP/JKFIT
+ Number of basis functions:     264
+
+
+ Coulomb and exchange fitting
+ Thresholds for fitting:       THRAO_COUL= 1.0D-15    THRAO_EXCH= 1.0D-13    THRMO= 1.0D-12    THRPROD= 1.0D-12    THRASM= 1.0D-12
+                               THR2HLF=    1.0D-12
+
+ Basis set AVTZ-JKFIT loaded. Number of basis functions: 264
+
+ Orbital guess generated from atomic densities. Full valence occupancy:   15
+ Using density fitting in orbital guess
+
+
+ Initial occupancy:  14
+
+ NELEC=   28   SYM=1   MS2= 0   THRE=1.0D-08   THRD=3.2D-06   THRG=3.2D-06  HFMA2=F  DIIS_START=2   DIIS_MAX=10   DIIS_INCORE=F
+
+ Level shifts:    0.00 (CLOSED)    0.00 (OPEN)    0.30 (GAP_MIN)
+
+ ITER           ETOT              DE          GRAD        DDIFF     DIIS  NEXP   TIME(IT)  TIME(TOT)  DIAG
+   1    -1638.62857205   -1638.62857205     0.00D+00     0.11D+00     0     0       0.09      0.18    start
+   2    -1638.58152637       0.04704568     0.17D-01     0.12D-01     1     0       0.08      0.26    diag
+   3    -1638.72583113      -0.14430476     0.24D-01     0.79D-02     2     0       0.08      0.34    diag
+   4    -1638.72654803      -0.00071690     0.16D-02     0.47D-03     3     0       0.08      0.42    diag
+   5    -1638.72655202      -0.00000399     0.61D-04     0.10D-03     4     0       0.08      0.50    diag
+   6    -1638.72655206      -0.00000004     0.76D-05     0.68D-05     5     0       0.08      0.58    diag
+   7    -1638.72655206      -0.00000000     0.29D-06     0.46D-06     6     0       0.08      0.66    diag
+   8    -1638.72655206       0.00000000     0.30D-07     0.16D-07     0     0       0.08      0.74    diag
+
+ Final occupancy:  14
+
+ !RHF STATE 1.1 Energy              -1638.726552059237
+  RHF One-electron energy           -2280.798232836252
+  RHF Two-electron energy             642.071680777015
+  RHF Kinetic energy                 1638.657354620975
+  RHF Nuclear energy                    0.000000000000
+  RHF Virial quotient                  -1.000042228132
+
+ !RHF STATE 1.1 Dipole moment          -0.00000000     0.00000000     0.00000000
+ Dipole moment /Debye                  -0.00000000     0.00000000     0.00000000
+
+ ELECTRON ORBITALS
+ =================
+
+  Orbital  Occupation    Energy    Cen Mu Typ  Coefficients
+    1.1     2.00000  -329.10996     1  1  s    0.97696
+    2.1     2.00000   -41.12864     1  2  s    0.97695
+    3.1     2.00000   -35.92929     1  1  px   0.36158    1  1  py   0.92396
+    4.1     2.00000   -35.92929     1  1  px   0.79390    1  1  pz  -0.56070
+    5.1     2.00000   -35.92929     1  1  px   0.48880    1  1  py  -0.30158    1  1  pz   0.81858
+    6.1     2.00000    -5.32522     1  3  s    0.99976
+    7.1     2.00000    -3.64189     1  2  px  -0.64423    1  2  py   0.74667
+    8.1     2.00000    -3.64189     1  2  px   0.75302    1  2  py   0.65694
+    9.1     2.00000    -3.64189     1  2  pz   0.98563
+   10.1     2.00000    -0.81003     1  1  d0   0.57432    1  1  d2- -0.26244    1  1  d1+  0.51498    1  1  d1- -0.56739
+   11.1     2.00000    -0.81003     1  1  d1+  0.67325    1  1  d1-  0.72554
+   12.1     2.00000    -0.81003     1  1  d0   0.79627    1  1  d2-  0.39235    1  1  d1+ -0.31942    1  1  d1-  0.34391
+   13.1     2.00000    -0.81003     1  1  d2-  0.77159    1  1  d1+  0.34579    1  1  d2+ -0.48536
+   14.1     2.00000    -0.81003     1  1  d2-  0.40403    1  1  d1+  0.26342    1  1  d2+  0.86542
+
+
+ HOMO     14.1    -0.810026 =     -22.0419eV
+ LUMO     15.1    -0.232960 =      -6.3392eV
+ LUMO-HOMO         0.577066 =      15.7028eV
+
+ Orbitals saved in record  2100.2
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       29.36       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       4        0.66       700     1000      520     2100   
+                                         GEOM     BASIS   MCVARS     RHF  
+
+ PROGRAMS   *        TOTAL     DF-HF       INT
+ CPU TIMES  *         1.51      0.77      0.60
+ REAL TIME  *         1.84 SEC
+ DISK USED  *        33.39 MB
+ **********************************************************************************************************************************
+
+
+ PROGRAM * MP2 (Closed-shell)     Authors: C. Hampel, H.-J. Werner, 1991, M. Deegan, P.J. Knowles, 1992
+
+
+ Generating basis AUG-CC-PVTZ-MP2FIT
+  Atom=CU       basis=aug-cc-pVTZ/MP2FIT
+ Number of basis functions:     293
+
+
+ Convergence thresholds:  THRVAR = 1.00D-08  THRDEN = 1.00D-06
+
+ Number of core orbitals:           9 (   9 )
+ Number of closed-shell orbitals:   5 (   5 )
+ Number of external orbitals:      79 (  79 )
+
+ Molecular orbitals read from record     2100.2  Type=RHF/CANONICAL (state 1.1)
+
+
+ Entering DF-MP2
+
+ Thresholds:    THRAO= 0.100D-13    THRMO= 0.100D-13    THROV= 0.100D-13    THRPROD= 0.100D-13
+
+ Fitting basis: AUG-CC-PVTZ-MP2FIT
+ Number of fitting functions:              293
+
+ Minimum memory with paging:              1.23 MW
+ Minimum memory for incore algorithm:     1.35 MW
+ Memory for 3-index integrals:            0.00 MW
+
+ Disk space for H1-integrals:             1.10 MB (   1 records)
+
+ SCS-MP2 correlation energy:           -0.428606279004   (PS=  1.200000  PT=  0.333333)
+ SCS-MP2 total energy:              -1639.155158338241
+
+ Norm of first-order wave function:     0.048169120086
+ Coefficient of reference function:     0.976752023382
+
+  Reference energy                  -1638.726552059237
+  MP2 singlet pair energy              -0.220098528965
+  MP2 triplet pair energy              -0.264355785396
+  MP2 correlation energy               -0.484454314361
+
+ !MP2 total energy                  -1639.211006373598
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       29.36       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       4        0.66       700     1000      520     2100   
+                                         GEOM     BASIS   MCVARS     RHF  
+
+ PROGRAMS   *        TOTAL    DF-MP2     DF-HF       INT
+ CPU TIMES  *         1.62      0.11      0.77      0.60
+ REAL TIME  *         2.00 SEC
+ DISK USED  *        33.39 MB
+ **********************************************************************************************************************************
+
+ DO I                   =         1.00000000   
+
+
+ PROGRAM * MP2 (Closed-shell)     Authors: C. Hampel, H.-J. Werner, 1991, M. Deegan, P.J. Knowles, 1992
+
+                                   MP2-F12 implementation by H.-J. Werner, 2007
+
+                   Density fitting integral evaluation by F.R. Manby, 2003,2007, G. Knizia, 2010
+
+
+ Generating basis AVTZ-JKFIT
+ Generating basis AVTZ-JKFIT
+ Generating basis AUG-CC-PVTZ-MP2FIT
+
+ Convergence thresholds:  THRVAR = 1.00D-08  THRDEN = 1.00D-06
+
+ Number of core orbitals:           9 (   9 )
+ Number of closed-shell orbitals:   5 (   5 )
+ Number of external orbitals:      79 (  79 )
+
+ Molecular orbitals read from record     2100.2  Type=RHF/CANONICAL (state 1.1)
+ Ansatz: F12/3C(FIXC)
+ ..Method: DF-MP2-F12
+
+ ..MethodName: MP2-F12
+
+ ..TheoryLevel: mp2-f12
+
+ ..ContextName: df_mp2-f12
+
+ ..AlgoFileName: DfMp2-f12.itfca
+
+ AlgoFileName: DfMp2-f12_cfixca.itfca
+
+ Enter DF-MP2-F12 [ITF]
+
+ Geminal basis:    OPTFULL  GEM_TYPE=SLATER  BETA=2.4  NGEM=6
+
+ Optimizing Gaussian exponents for each gem_beta
+
+ Geminal optimization for beta= 2.4000
+ Weight function:   m=0, omega= 2.6254
+
+ Augmented Hessian optimization of geminal fit. Trust ratio= 0.40000
+ Convergence reached after  61 iterations. Final gradient= 5.53D-18, Step= 9.97D-08, Delta= 7.81D-10
+
+ Alpha:                 0.74256     2.43521     7.54930    24.00410    88.84850   490.04363
+ Coeff:                 0.13941     0.27633     0.22936     0.15714     0.10208     0.06423
+
+ Gauss expansion for Slater geminal F12(r) = exp(-2.4 r):
+ F12 Alphas:      0.7425642013     2.4352138049     7.5493011671    24.0041001035    88.8484963163   490.0436279517
+ F12 Coeffs:     -0.0580882710    -0.1151382175    -0.0955671288    -0.0654760945    -0.0425340204    -0.0267630375
+ Printing F1[rsij], i.e., transformed to MO
+ Printing Tensors step by step for comparison
+
+ ===========================================
+ Dump of tensor: df_mp2-f12_cfixca::VF[mnij]
+ Properties: { rk: 4 dim: (5 x 5 x 5 x 5) sym: ( 1 , [ [0,1] , [2,3] ] )  irp : 0 }
+ Provided Range = [0,5)x[0,5)x[0,5)x[0,5)
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       0
+
+ Block  [    i    j   0   0 ]
+                      0             1             2             3             4   
+        0      -0.00578101    0.0           0.0           0.0           0.0       
+        1       0.0          -0.00142364    0.00000937    0.00000936   -0.00002366
+        2       0.0           0.00000937   -0.00143510   -0.00000196   -0.00000244
+        3       0.0           0.00000936   -0.00000196   -0.00138429    0.00000494
+        4       0.0          -0.00002366   -0.00000244    0.00000494   -0.00139590
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       0
+
+ Block  [    i    j   1   0 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00120045   -0.00007762   -0.00007752    0.00019599
+        1      -0.00315692    0.0          -0.00011093    0.00013286    0.00008225
+        2       0.00006825    0.00012616    0.00000294    0.00011861   -0.00010496
+        3       0.00006816   -0.00015111   -0.00013455    0.00000014   -0.00013264
+        4      -0.00017232   -0.00009354    0.00014247    0.00011943   -0.00000308
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       0
+
+ Block  [    i    j   2   0 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00007762   -0.00110551    0.00001623    0.00002018
+        1       0.00006825   -0.00001523   -0.00002438    0.00011710   -0.00020525
+        2      -0.00324040    0.00002143    0.0          -0.00018486   -0.00015744
+        3      -0.00001427   -0.00013353    0.00021024    0.00000333   -0.00000894
+        4      -0.00001775    0.00021035    0.00017906   -0.00000256    0.00001191
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       0
+
+ Block  [    i    j   3   0 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00007752    0.00001623   -0.00152630   -0.00004095
+        1       0.00006816    0.00001825    0.00001492   -0.00000114    0.00000380
+        2      -0.00001427    0.00001745   -0.00002539   -0.00002754    0.00004632
+        3      -0.00287042    0.00000100    0.00002421    0.0           0.00007519
+        4       0.00003601    0.00002709   -0.00003996   -0.00008552    0.00000714
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       0
+
+ Block  [    i    j   4   0 ]
+                      0             1             2             3             4   
+        0       0.0           0.00019599    0.00002018   -0.00004095   -0.00143020
+        1      -0.00017232    0.00001129   -0.00010539    0.00010555    0.00002552
+        2      -0.00001775    0.00006279   -0.00002162    0.00004890   -0.00009862
+        3       0.00003601   -0.00012324   -0.00004377    0.00001033   -0.00005913
+        4      -0.00295491   -0.00002244    0.00008672    0.00005199    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       1
+
+ Block  [    i    j   0   1 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00315692    0.00006825    0.00006816   -0.00017232
+        1      -0.00120045    0.0           0.00012616   -0.00015111   -0.00009354
+        2      -0.00007762   -0.00011093    0.00000294   -0.00013455    0.00014247
+        3      -0.00007752    0.00013286    0.00011861    0.00000014    0.00011943
+        4       0.00019599    0.00008225   -0.00010496   -0.00013264   -0.00000308
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       1
+
+ Block  [    i    j   1   1 ]
+                      0             1             2             3             4   
+        0      -0.00142364    0.0          -0.00001523    0.00001825    0.00001129
+        1       0.0          -0.00578101    0.0           0.0           0.0       
+        2      -0.00001523    0.0          -0.00140271    0.00002580    0.00000514
+        3       0.00001825    0.0           0.00002580   -0.00141576    0.00000008
+        4       0.00001129    0.0           0.00000514    0.00000008   -0.00139682
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       1
+
+ Block  [    i    j   2   1 ]
+                      0             1             2             3             4   
+        0       0.00000937   -0.00011093   -0.00002438    0.00001492   -0.00010539
+        1       0.00012616    0.0          -0.00137374   -0.00021367   -0.00004260
+        2       0.00002143   -0.00300456    0.0          -0.00003036    0.00000344
+        3       0.00001745    0.00018787    0.00003452    0.00000039   -0.00017660
+        4       0.00006279    0.00003746   -0.00000391    0.00016919   -0.00000977
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       1
+
+ Block  [    i    j   3   1 ]
+                      0             1             2             3             4   
+        0       0.00000936    0.00013286    0.00011710   -0.00000114    0.00010555
+        1      -0.00015111    0.0          -0.00021367   -0.00126572   -0.00000064
+        2      -0.00013353    0.00018787   -0.00000417   -0.00000327   -0.00003911
+        3       0.00000100   -0.00309954    0.00000287    0.0           0.00016888
+        4      -0.00012324    0.00000056    0.00007614   -0.00019207   -0.00000519
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       1
+
+ Block  [    i    j   4   1 ]
+                      0             1             2             3             4   
+        0      -0.00002366    0.00008225   -0.00020525    0.00000380    0.00002552
+        1      -0.00009354    0.0          -0.00004260   -0.00000064   -0.00142255
+        2       0.00021035    0.00003746    0.00000047    0.00010046    0.00008089
+        3       0.00002709    0.00000056   -0.00013008    0.00002319    0.00004300
+        4      -0.00002244   -0.00296164   -0.00007112   -0.00003781    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       2
+
+ Block  [    i    j   0   2 ]
+                      0             1             2             3             4   
+        0       0.0           0.00006825   -0.00324040   -0.00001427   -0.00001775
+        1      -0.00007762   -0.00001523    0.00002143   -0.00013353    0.00021035
+        2      -0.00110551   -0.00002438    0.0           0.00021024    0.00017906
+        3       0.00001623    0.00011710   -0.00018486    0.00000333   -0.00000256
+        4       0.00002018   -0.00020525   -0.00015744   -0.00000894    0.00001191
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       2
+
+ Block  [    i    j   1   2 ]
+                      0             1             2             3             4   
+        0       0.00000937    0.00012616    0.00002143    0.00001745    0.00006279
+        1      -0.00011093    0.0          -0.00300456    0.00018787    0.00003746
+        2      -0.00002438   -0.00137374    0.0           0.00003452   -0.00000391
+        3       0.00001492   -0.00021367   -0.00003036    0.00000039    0.00016919
+        4      -0.00010539   -0.00004260    0.00000344   -0.00017660   -0.00000977
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       2
+
+ Block  [    i    j   2   2 ]
+                      0             1             2             3             4   
+        0      -0.00143510    0.00000294    0.0          -0.00002539   -0.00002162
+        1       0.00000294   -0.00140271    0.0          -0.00000417    0.00000047
+        2       0.0           0.0          -0.00578101    0.0           0.0       
+        3      -0.00002539   -0.00000417    0.0          -0.00139689   -0.00000502
+        4      -0.00002162    0.00000047    0.0          -0.00000502   -0.00140422
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       2
+
+ Block  [    i    j   3   2 ]
+                      0             1             2             3             4   
+        0      -0.00000196    0.00011861   -0.00018486   -0.00002754    0.00004890
+        1      -0.00013455    0.00002580   -0.00003036   -0.00000327    0.00010046
+        2       0.00021024    0.00003452    0.0          -0.00142197    0.00004160
+        3       0.00002421    0.00000287   -0.00296215    0.0          -0.00001971
+        4      -0.00004377   -0.00013008   -0.00003657    0.00002242   -0.00002384
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       2
+
+ Block  [    i    j   4   2 ]
+                      0             1             2             3             4   
+        0      -0.00000244   -0.00010496   -0.00015744    0.00004632   -0.00009862
+        1       0.00014247    0.00000514    0.00000344   -0.00003911    0.00008089
+        2       0.00017906   -0.00000391    0.0           0.00004160   -0.00136124
+        3      -0.00003996    0.00007614   -0.00003657   -0.00000271    0.00019744
+        4       0.00008672   -0.00007112   -0.00301555   -0.00017360    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       3
+
+ Block  [    i    j   0   3 ]
+                      0             1             2             3             4   
+        0       0.0           0.00006816   -0.00001427   -0.00287042    0.00003601
+        1      -0.00007752    0.00001825    0.00001745    0.00000100    0.00002709
+        2       0.00001623    0.00001492   -0.00002539    0.00002421   -0.00003996
+        3      -0.00152630   -0.00000114   -0.00002754    0.0          -0.00008552
+        4      -0.00004095    0.00000380    0.00004632    0.00007519    0.00000714
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       3
+
+ Block  [    i    j   1   3 ]
+                      0             1             2             3             4   
+        0       0.00000936   -0.00015111   -0.00013353    0.00000100   -0.00012324
+        1       0.00013286    0.0           0.00018787   -0.00309954    0.00000056
+        2       0.00011710   -0.00021367   -0.00000417    0.00000287    0.00007614
+        3      -0.00000114   -0.00126572   -0.00000327    0.0          -0.00019207
+        4       0.00010555   -0.00000064   -0.00003911    0.00016888   -0.00000519
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       3
+
+ Block  [    i    j   2   3 ]
+                      0             1             2             3             4   
+        0      -0.00000196   -0.00013455    0.00021024    0.00002421   -0.00004377
+        1       0.00011861    0.00002580    0.00003452    0.00000287   -0.00013008
+        2      -0.00018486   -0.00003036    0.0          -0.00296215   -0.00003657
+        3      -0.00002754   -0.00000327   -0.00142197    0.0           0.00002242
+        4       0.00004890    0.00010046    0.00004160   -0.00001971   -0.00002384
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       3
+
+ Block  [    i    j   3   3 ]
+                      0             1             2             3             4   
+        0      -0.00138429    0.00000014    0.00000333    0.0           0.00001033
+        1       0.00000014   -0.00141576    0.00000039    0.0           0.00002319
+        2       0.00000333    0.00000039   -0.00139689    0.0          -0.00000271
+        3       0.0           0.0           0.0          -0.00578101    0.0       
+        4       0.00001033    0.00002319   -0.00000271    0.0          -0.00144199
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       3
+
+ Block  [    i    j   4   3 ]
+                      0             1             2             3             4   
+        0       0.00000494   -0.00013264   -0.00000894    0.00007519   -0.00005913
+        1       0.00011943    0.00000008   -0.00017660    0.00016888    0.00004300
+        2      -0.00000256    0.00016919   -0.00000502   -0.00001971    0.00019744
+        3      -0.00008552   -0.00019207    0.00002242    0.0          -0.00104847
+        4       0.00005199   -0.00003781   -0.00017360   -0.00329055    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       4
+
+ Block  [    i    j   0   4 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00017232   -0.00001775    0.00003601   -0.00295491
+        1       0.00019599    0.00001129    0.00006279   -0.00012324   -0.00002244
+        2       0.00002018   -0.00010539   -0.00002162   -0.00004377    0.00008672
+        3      -0.00004095    0.00010555    0.00004890    0.00001033    0.00005199
+        4      -0.00143020    0.00002552   -0.00009862   -0.00005913    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       4
+
+ Block  [    i    j   1   4 ]
+                      0             1             2             3             4   
+        0      -0.00002366   -0.00009354    0.00021035    0.00002709   -0.00002244
+        1       0.00008225    0.0           0.00003746    0.00000056   -0.00296164
+        2      -0.00020525   -0.00004260    0.00000047   -0.00013008   -0.00007112
+        3       0.00000380   -0.00000064    0.00010046    0.00002319   -0.00003781
+        4       0.00002552   -0.00142255    0.00008089    0.00004300    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       4
+
+ Block  [    i    j   2   4 ]
+                      0             1             2             3             4   
+        0      -0.00000244    0.00014247    0.00017906   -0.00003996    0.00008672
+        1      -0.00010496    0.00000514   -0.00000391    0.00007614   -0.00007112
+        2      -0.00015744    0.00000344    0.0          -0.00003657   -0.00301555
+        3       0.00004632   -0.00003911    0.00004160   -0.00000271   -0.00017360
+        4      -0.00009862    0.00008089   -0.00136124    0.00019744    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       4
+
+ Block  [    i    j   3   4 ]
+                      0             1             2             3             4   
+        0       0.00000494    0.00011943   -0.00000256   -0.00008552    0.00005199
+        1      -0.00013264    0.00000008    0.00016919   -0.00019207   -0.00003781
+        2      -0.00000894   -0.00017660   -0.00000502    0.00002242   -0.00017360
+        3       0.00007519    0.00016888   -0.00001971    0.0          -0.00329055
+        4      -0.00005913    0.00004300    0.00019744   -0.00104847    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       4
+
+ Block  [    i    j   4   4 ]
+                      0             1             2             3             4   
+        0      -0.00139590   -0.00000308    0.00001191    0.00000714    0.0       
+        1      -0.00000308   -0.00139682   -0.00000977   -0.00000519    0.0       
+        2       0.00001191   -0.00000977   -0.00140422   -0.00002384    0.0       
+        3       0.00000714   -0.00000519   -0.00002384   -0.00144199    0.0       
+        4       0.0           0.0           0.0           0.0          -0.00578101
+
+ ===========================================
+
+ ===========================================
+ Dump of tensor: df_mp2-f12_cfixca::XF[mnij]
+ Properties: { rk: 4 dim: (5 x 5 x 5 x 5) sym: ( 1 , [ [0,1] , [2,3] ] )  irp : 0 }
+ Provided Range = [0,5)x[0,5)x[0,5)x[0,5)
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       0
+
+ Block  [    i    j   0   0 ]
+                      0             1             2             3             4   
+        0       0.00019462    0.0           0.0           0.0           0.0       
+        1       0.0           0.00004033   -0.00000084   -0.00000084    0.00000213
+        2       0.0          -0.00000084    0.00004136    0.00000018    0.00000022
+        3       0.0          -0.00000084    0.00000018    0.00003679   -0.00000044
+        4       0.0           0.00000213    0.00000022   -0.00000044    0.00003783
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       0
+
+ Block  [    i    j   1   0 ]
+                      0             1             2             3             4   
+        0       0.0           0.00002484    0.00000385    0.00000385   -0.00000972
+        1       0.00012945    0.0           0.00000489   -0.00000586   -0.00000362
+        2      -0.00000301   -0.00000626   -0.00000026   -0.00000523    0.00000413
+        3      -0.00000300    0.00000750    0.00000667   -0.00000001    0.00000652
+        4       0.00000759    0.00000464   -0.00000750   -0.00000533    0.00000028
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       0
+
+ Block  [    i    j   2   0 ]
+                      0             1             2             3             4   
+        0       0.0           0.00000385    0.00002014   -0.00000080   -0.00000100
+        1      -0.00000301    0.00000137    0.00000121   -0.00000515    0.00000954
+        2       0.00013312   -0.00000094    0.0           0.00000815    0.00000694
+        3       0.00000063    0.00000663   -0.00001043   -0.00000030    0.00000067
+        4       0.00000078   -0.00001000   -0.00000888    0.00000037   -0.00000107
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       0
+
+ Block  [    i    j   3   0 ]
+                      0             1             2             3             4   
+        0       0.0           0.00000385   -0.00000080    0.00004101    0.00000203
+        1      -0.00000300   -0.00000164   -0.00000140    0.00000006   -0.00000084
+        2       0.00000063   -0.00000151    0.00000228    0.00000137   -0.00000231
+        3       0.00011682   -0.00000004   -0.00000107    0.0          -0.00000331
+        4      -0.00000159   -0.00000194    0.00000174    0.00000424   -0.00000064
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       0
+
+ Block  [    i    j   4   0 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00000972   -0.00000100    0.00000203    0.00003624
+        1       0.00000759   -0.00000102    0.00000587   -0.00000458   -0.00000127
+        2       0.00000078   -0.00000204    0.00000194   -0.00000241    0.00000489
+        3      -0.00000159    0.00000617    0.00000195   -0.00000093    0.00000293
+        4       0.00012054    0.00000099   -0.00000382   -0.00000229    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       1
+
+ Block  [    i    j   0   1 ]
+                      0             1             2             3             4   
+        0       0.0           0.00012945   -0.00000301   -0.00000300    0.00000759
+        1       0.00002484    0.0          -0.00000626    0.00000750    0.00000464
+        2       0.00000385    0.00000489   -0.00000026    0.00000667   -0.00000750
+        3       0.00000385   -0.00000586   -0.00000523   -0.00000001   -0.00000533
+        4      -0.00000972   -0.00000362    0.00000413    0.00000652    0.00000028
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       1
+
+ Block  [    i    j   1   1 ]
+                      0             1             2             3             4   
+        0       0.00004033    0.0           0.00000137   -0.00000164   -0.00000102
+        1       0.0           0.00019462    0.0           0.0           0.0       
+        2       0.00000137    0.0           0.00003845   -0.00000232   -0.00000046
+        3      -0.00000164    0.0          -0.00000232    0.00003962   -6.9649e-09
+        4      -0.00000102    0.0          -0.00000046   -6.9649e-09    0.00003792
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       1
+
+ Block  [    i    j   2   1 ]
+                      0             1             2             3             4   
+        0      -0.00000084    0.00000489    0.00000121   -0.00000140    0.00000587
+        1      -0.00000626    0.0           0.00003344    0.00001060    0.00000211
+        2      -0.00000094    0.00012273    0.0           0.00000134   -0.00000015
+        3      -0.00000151   -0.00000828   -0.00000171   -0.00000004    0.00000846
+        4      -0.00000204   -0.00000165    0.00000019   -0.00000780    0.00000088
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       1
+
+ Block  [    i    j   3   1 ]
+                      0             1             2             3             4   
+        0      -0.00000084   -0.00000586   -0.00000515    0.00000006   -0.00000458
+        1       0.00000750    0.0           0.00001060    0.00002808    0.00000003
+        2       0.00000663   -0.00000828    0.00000037    0.00000016    0.00000104
+        3      -0.00000004    0.00012692   -0.00000013    0.0          -0.00000744
+        4       0.00000617   -0.00000002   -0.00000437    0.00000953    0.00000047
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       1
+
+ Block  [    i    j   4   1 ]
+                      0             1             2             3             4   
+        0       0.00000213   -0.00000362    0.00000954   -0.00000084   -0.00000127
+        1       0.00000464    0.0           0.00000211    0.00000003    0.00003586
+        2      -0.00001000   -0.00000165   -0.00000004   -0.00000409   -0.00000401
+        3      -0.00000194   -0.00000002    0.00000675   -0.00000208   -0.00000213
+        4       0.00000099    0.00012084    0.00000313    0.00000167    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       2
+
+ Block  [    i    j   0   2 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00000301    0.00013312    0.00000063    0.00000078
+        1       0.00000385    0.00000137   -0.00000094    0.00000663   -0.00001000
+        2       0.00002014    0.00000121    0.0          -0.00001043   -0.00000888
+        3      -0.00000080   -0.00000515    0.00000815   -0.00000030    0.00000037
+        4      -0.00000100    0.00000954    0.00000694    0.00000067   -0.00000107
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       2
+
+ Block  [    i    j   1   2 ]
+                      0             1             2             3             4   
+        0      -0.00000084   -0.00000626   -0.00000094   -0.00000151   -0.00000204
+        1       0.00000489    0.0           0.00012273   -0.00000828   -0.00000165
+        2       0.00000121    0.00003344    0.0          -0.00000171    0.00000019
+        3      -0.00000140    0.00001060    0.00000134   -0.00000004   -0.00000780
+        4       0.00000587    0.00000211   -0.00000015    0.00000846    0.00000088
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       2
+
+ Block  [    i    j   2   2 ]
+                      0             1             2             3             4   
+        0       0.00004136   -0.00000026    0.0           0.00000228    0.00000194
+        1      -0.00000026    0.00003845    0.0           0.00000037   -0.00000004
+        2       0.0           0.0           0.00019462    0.0           0.0       
+        3       0.00000228    0.00000037    0.0           0.00003792    0.00000045
+        4       0.00000194   -0.00000004    0.0           0.00000045    0.00003858
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       2
+
+ Block  [    i    j   3   2 ]
+                      0             1             2             3             4   
+        0       0.00000018   -0.00000523    0.00000815    0.00000137   -0.00000241
+        1       0.00000667   -0.00000232    0.00000134    0.00000016   -0.00000409
+        2      -0.00001043   -0.00000171    0.0           0.00003583   -0.00000206
+        3      -0.00000107   -0.00000013    0.00012086    0.0           0.00000087
+        4       0.00000195    0.00000675    0.00000161   -0.00000111    0.00000214
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       2
+
+ Block  [    i    j   4   2 ]
+                      0             1             2             3             4   
+        0       0.00000022    0.00000413    0.00000694   -0.00000231    0.00000489
+        1      -0.00000750   -0.00000046   -0.00000015    0.00000104   -0.00000401
+        2      -0.00000888    0.00000019    0.0          -0.00000206    0.00003282
+        3       0.00000174   -0.00000437    0.00000161    0.00000024   -0.00000979
+        4      -0.00000382    0.00000313    0.00012322    0.00000765    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       3
+
+ Block  [    i    j   0   3 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00000300    0.00000063    0.00011682   -0.00000159
+        1       0.00000385   -0.00000164   -0.00000151   -0.00000004   -0.00000194
+        2      -0.00000080   -0.00000140    0.00000228   -0.00000107    0.00000174
+        3       0.00004101    0.00000006    0.00000137    0.0           0.00000424
+        4       0.00000203   -0.00000084   -0.00000231   -0.00000331   -0.00000064
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       3
+
+ Block  [    i    j   1   3 ]
+                      0             1             2             3             4   
+        0      -0.00000084    0.00000750    0.00000663   -0.00000004    0.00000617
+        1      -0.00000586    0.0          -0.00000828    0.00012692   -0.00000002
+        2      -0.00000515    0.00001060    0.00000037   -0.00000013   -0.00000437
+        3       0.00000006    0.00002808    0.00000016    0.0           0.00000953
+        4      -0.00000458    0.00000003    0.00000104   -0.00000744    0.00000047
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       3
+
+ Block  [    i    j   2   3 ]
+                      0             1             2             3             4   
+        0       0.00000018    0.00000667   -0.00001043   -0.00000107    0.00000195
+        1      -0.00000523   -0.00000232   -0.00000171   -0.00000013    0.00000675
+        2       0.00000815    0.00000134    0.0           0.00012086    0.00000161
+        3       0.00000137    0.00000016    0.00003583    0.0          -0.00000111
+        4      -0.00000241   -0.00000409   -0.00000206    0.00000087    0.00000214
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       3
+
+ Block  [    i    j   3   3 ]
+                      0             1             2             3             4   
+        0       0.00003679   -0.00000001   -0.00000030    0.0          -0.00000093
+        1      -0.00000001    0.00003962   -0.00000004    0.0          -0.00000208
+        2      -0.00000030   -0.00000004    0.00003792    0.0           0.00000024
+        3       0.0           0.0           0.0           0.00019462    0.0       
+        4      -0.00000093   -0.00000208    0.00000024    0.0           0.00004198
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       3
+
+ Block  [    i    j   4   3 ]
+                      0             1             2             3             4   
+        0      -0.00000044    0.00000652    0.00000067   -0.00000331    0.00000293
+        1      -0.00000533   -6.9649e-09    0.00000846   -0.00000744   -0.00000213
+        2       0.00000037   -0.00000780    0.00000045    0.00000087   -0.00000979
+        3       0.00000424    0.00000953   -0.00000111    0.0           0.00001731
+        4      -0.00000229    0.00000167    0.00000765    0.00013533    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       4
+
+ Block  [    i    j   0   4 ]
+                      0             1             2             3             4   
+        0       0.0           0.00000759    0.00000078   -0.00000159    0.00012054
+        1      -0.00000972   -0.00000102   -0.00000204    0.00000617    0.00000099
+        2      -0.00000100    0.00000587    0.00000194    0.00000195   -0.00000382
+        3       0.00000203   -0.00000458   -0.00000241   -0.00000093   -0.00000229
+        4       0.00003624   -0.00000127    0.00000489    0.00000293    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       4
+
+ Block  [    i    j   1   4 ]
+                      0             1             2             3             4   
+        0       0.00000213    0.00000464   -0.00001000   -0.00000194    0.00000099
+        1      -0.00000362    0.0          -0.00000165   -0.00000002    0.00012084
+        2       0.00000954    0.00000211   -0.00000004    0.00000675    0.00000313
+        3      -0.00000084    0.00000003   -0.00000409   -0.00000208    0.00000167
+        4      -0.00000127    0.00003586   -0.00000401   -0.00000213    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       4
+
+ Block  [    i    j   2   4 ]
+                      0             1             2             3             4   
+        0       0.00000022   -0.00000750   -0.00000888    0.00000174   -0.00000382
+        1       0.00000413   -0.00000046    0.00000019   -0.00000437    0.00000313
+        2       0.00000694   -0.00000015    0.0           0.00000161    0.00012322
+        3      -0.00000231    0.00000104   -0.00000206    0.00000024    0.00000765
+        4       0.00000489   -0.00000401    0.00003282   -0.00000979    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       4
+
+ Block  [    i    j   3   4 ]
+                      0             1             2             3             4   
+        0      -0.00000044   -0.00000533    0.00000037    0.00000424   -0.00000229
+        1       0.00000652   -6.9649e-09   -0.00000780    0.00000953    0.00000167
+        2       0.00000067    0.00000846    0.00000045   -0.00000111    0.00000765
+        3      -0.00000331   -0.00000744    0.00000087    0.0           0.00013533
+        4       0.00000293   -0.00000213   -0.00000979    0.00001731    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       4
+
+ Block  [    i    j   4   4 ]
+                      0             1             2             3             4   
+        0       0.00003783    0.00000028   -0.00000107   -0.00000064    0.0       
+        1       0.00000028    0.00003792    0.00000088    0.00000047    0.0       
+        2      -0.00000107    0.00000088    0.00003858    0.00000214    0.0       
+        3      -0.00000064    0.00000047    0.00000214    0.00004198    0.0       
+        4       0.0           0.0           0.0           0.0           0.00019462
+
+ ===========================================
+
+ ===========================================
+ Dump of tensor: df_mp2-f12_cfixca::BF[mnij]
+ Properties: { rk: 4 dim: (5 x 5 x 5 x 5) sym: ( 1 , [ [0,1] , [2,3] ] )  irp : 0 }
+ Provided Range = [0,5)x[0,5)x[0,5)x[0,5)
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       0
+
+ Block  [    i    j   0   0 ]
+                      0             1             2             3             4   
+        0       0.00918450    1.3982e-14   -1.3416e-14    0.0          -1.7287e-14
+        1       1.3982e-14    0.00488735   -0.00058596   -0.00058519    0.00147948
+        2      -1.3416e-14   -0.00058596    0.00560408    0.00012251    0.00015237
+        3       0.0          -0.00058519    0.00012251    0.00242756   -0.00030916
+        4      -1.7287e-14    0.00147948    0.00015237   -0.00030916    0.00315302
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       0
+
+ Block  [    i    j   1   0 ]
+                      0             1             2             3             4   
+        0       1.3982e-14   -0.00136913    0.00067250    0.00067162   -0.00169798
+        1       0.00566628    1.5449e-14    0.00014066   -0.00016848   -0.00010429
+        2      -0.00008654   -0.00109305   -0.00018403   -0.00016037   -0.00052875
+        3      -0.00008643    0.00130919    0.00115696   -0.00000859    0.00106858
+        4       0.00021851    0.00081044   -0.00181625   -0.00024309    0.00019262
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       0
+
+ Block  [    i    j   2   0 ]
+                      0             1             2             3             4   
+        0      -1.3416e-14    0.00067250   -0.00219171   -0.00014061   -0.00017488
+        1      -0.00008654    0.00095239    0.00021121   -0.00013851    0.00092211
+        2       0.00577213   -0.00002718   -1.1874e-14    0.00023441    0.00019964
+        3       0.00001809    0.00116563   -0.00182151   -0.00020789    0.00037603
+        4       0.00002250   -0.00124048   -0.00155136    0.00034281   -0.00074450
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       0
+
+ Block  [    i    j   3   0 ]
+                      0             1             2             3             4   
+        0       0.0           0.00067162   -0.00014061    0.00145395    0.00035483
+        1      -0.00008643   -0.00114071   -0.00100526    0.00000986   -0.00090521
+        2       0.00001809   -0.00101844    0.00158710    0.00023859   -0.00042343
+        3       0.00530298   -0.00000127   -0.00003070    0.0          -0.00009535
+        4      -0.00004566   -0.00102638    0.00002555    0.00074092   -0.00044639
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   0
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       0
+
+ Block  [    i    j   4   0 ]
+                      0             1             2             3             4   
+        0      -1.7287e-14   -0.00169798   -0.00017488    0.00035483    0.00062135
+        1       0.00021851   -0.00070615    0.00176923   -0.00004219   -0.00022107
+        2       0.00002250    0.00089414    0.00135172   -0.00040157    0.00085446
+        3      -0.00004566    0.00114830    0.00008062   -0.00064557    0.00051232
+        4       0.00541013    0.00002845   -0.00010996   -0.00006593   -1.8775e-14
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       1
+
+ Block  [    i    j   0   1 ]
+                      0             1             2             3             4   
+        0       1.3982e-14    0.00566628   -0.00008654   -0.00008643    0.00021851
+        1      -0.00136913    1.5449e-14   -0.00109305    0.00130919    0.00081044
+        2       0.00067250    0.00014066   -0.00018403    0.00115696   -0.00181625
+        3       0.00067162   -0.00016848   -0.00016037   -0.00000859   -0.00024309
+        4      -0.00169798   -0.00010429   -0.00052875    0.00106858    0.00019262
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       1
+
+ Block  [    i    j   1   1 ]
+                      0             1             2             3             4   
+        0       0.00488735    1.5449e-14    0.00095239   -0.00114071   -0.00070615
+        1       1.5449e-14    0.00918450    0.0           0.0           0.0       
+        2       0.00095239    0.0           0.00357921   -0.00161299   -0.00032162
+        3      -0.00114071    0.0          -0.00161299    0.00439467   -0.00000484
+        4      -0.00070615    0.0          -0.00032162   -0.00000484    0.00321078
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       1
+
+ Block  [    i    j   2   1 ]
+                      0             1             2             3             4   
+        0      -0.00058596    0.00014066    0.00021121   -0.00100526    0.00176923
+        1      -0.00109305    0.0           0.00013221    0.00185122    0.00036912
+        2      -0.00002718    0.00547307    0.0           0.00003849   -0.00000436
+        3      -0.00101844   -0.00023823   -0.00029911   -0.00002466    0.00113122
+        4       0.00089414   -0.00004750    0.00003390   -0.00066808    0.00061062
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       1
+
+ Block  [    i    j   3   1 ]
+                      0             1             2             3             4   
+        0      -0.00058519   -0.00016848   -0.00013851    0.00000986   -0.00004219
+        1       0.00130919    0.0           0.00185122   -0.00080369    0.00000556
+        2       0.00116563   -0.00023823    0.00026062    0.00002831   -0.00085771
+        3      -0.00000127    0.00559351   -0.00000364   -1.0200e-14   -0.00021415
+        4       0.00114830   -0.00000072   -0.00145738    0.00166408    0.00032458
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   1
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       1
+
+ Block  [    i    j   4   1 ]
+                      0             1             2             3             4   
+        0       0.00147948   -0.00010429    0.00092211   -0.00090521   -0.00022107
+        1       0.00081044    0.0           0.00036912    0.00000556    0.00055507
+        2      -0.00124048   -0.00004750   -0.00002954    0.00032615   -0.00070081
+        3      -0.00102638   -0.00000072    0.00152578   -0.00144993   -0.00037252
+        4       0.00002845    0.00541866    0.00009019    0.00004794    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       2
+
+ Block  [    i    j   0   2 ]
+                      0             1             2             3             4   
+        0      -1.3416e-14   -0.00008654    0.00577213    0.00001809    0.00002250
+        1       0.00067250    0.00095239   -0.00002718    0.00116563   -0.00124048
+        2      -0.00219171    0.00021121   -1.1874e-14   -0.00182151   -0.00155136
+        3      -0.00014061   -0.00013851    0.00023441   -0.00020789    0.00034281
+        4      -0.00017488    0.00092211    0.00019964    0.00037603   -0.00074450
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       2
+
+ Block  [    i    j   1   2 ]
+                      0             1             2             3             4   
+        0      -0.00058596   -0.00109305   -0.00002718   -0.00101844    0.00089414
+        1       0.00014066    0.0           0.00547307   -0.00023823   -0.00004750
+        2       0.00021121    0.00013221    0.0          -0.00029911    0.00003390
+        3      -0.00100526    0.00185122    0.00003849   -0.00002466   -0.00066808
+        4       0.00176923    0.00036912   -0.00000436    0.00113122    0.00061062
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       2
+
+ Block  [    i    j   2   2 ]
+                      0             1             2             3             4   
+        0       0.00560408   -0.00018403   -1.1874e-14    0.00158710    0.00135172
+        1      -0.00018403    0.00357921    0.0           0.00026062   -0.00002954
+        2      -1.1874e-14    0.0           0.00918450    0.0           0.0       
+        3       0.00158710    0.00026062    0.0           0.00321514    0.00031401
+        4       0.00135172   -0.00002954    0.0           0.00031401    0.00367358
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       2
+
+ Block  [    i    j   3   2 ]
+                      0             1             2             3             4   
+        0       0.00012251   -0.00016037    0.00023441    0.00023859   -0.00040157
+        1       0.00115696   -0.00161299    0.00003849    0.00002831    0.00032615
+        2      -0.00182151   -0.00029911    0.0           0.00055005   -0.00036039
+        3      -0.00003070   -0.00000364    0.00541930    0.0           0.00002500
+        4       0.00008062    0.00152578    0.00004638   -0.00019425    0.00149048
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   2
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       2
+
+ Block  [    i    j   4   2 ]
+                      0             1             2             3             4   
+        0       0.00015237   -0.00052875    0.00019964   -0.00042343    0.00085446
+        1      -0.00181625   -0.00032162   -0.00000436   -0.00085771   -0.00070081
+        2      -0.00155136    0.00003390    0.0          -0.00036039    0.00002391
+        3       0.00002555   -0.00145738    0.00004638    0.00016925   -0.00171061
+        4      -0.00010996    0.00009019    0.00548701    0.00022013    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       3
+
+ Block  [    i    j   0   3 ]
+                      0             1             2             3             4   
+        0       0.0          -0.00008643    0.00001809    0.00530298   -0.00004566
+        1       0.00067162   -0.00114071   -0.00101844   -0.00000127   -0.00102638
+        2      -0.00014061   -0.00100526    0.00158710   -0.00003070    0.00002555
+        3       0.00145395    0.00000986    0.00023859    0.0           0.00074092
+        4       0.00035483   -0.00090521   -0.00042343   -0.00009535   -0.00044639
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       3
+
+ Block  [    i    j   1   3 ]
+                      0             1             2             3             4   
+        0      -0.00058519    0.00130919    0.00116563   -0.00000127    0.00114830
+        1      -0.00016848    0.0          -0.00023823    0.00559351   -0.00000072
+        2      -0.00013851    0.00185122    0.00026062   -0.00000364   -0.00145738
+        3       0.00000986   -0.00080369    0.00002831   -1.0200e-14    0.00166408
+        4      -0.00004219    0.00000556   -0.00085771   -0.00021415    0.00032458
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       3
+
+ Block  [    i    j   2   3 ]
+                      0             1             2             3             4   
+        0       0.00012251    0.00115696   -0.00182151   -0.00003070    0.00008062
+        1      -0.00016037   -0.00161299   -0.00029911   -0.00000364    0.00152578
+        2       0.00023441    0.00003849    0.0           0.00541930    0.00004638
+        3       0.00023859    0.00002831    0.00055005    0.0          -0.00019425
+        4      -0.00040157    0.00032615   -0.00036039    0.00002500    0.00149048
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       3
+
+ Block  [    i    j   3   3 ]
+                      0             1             2             3             4   
+        0       0.00242756   -0.00000859   -0.00020789    0.0          -0.00064557
+        1      -0.00000859    0.00439467   -0.00002466   -1.0200e-14   -0.00144993
+        2      -0.00020789   -0.00002466    0.00321514    0.0           0.00016925
+        3       0.0          -1.0200e-14    0.0           0.00918450    0.0       
+        4      -0.00064557   -0.00144993    0.00016925    0.0           0.00603464
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   3
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       3
+
+ Block  [    i    j   4   3 ]
+                      0             1             2             3             4   
+        0      -0.00030916    0.00106858    0.00037603   -0.00009535    0.00051232
+        1      -0.00024309   -0.00000484    0.00113122   -0.00021415   -0.00037252
+        2       0.00034281   -0.00066808    0.00031401    0.00002500   -0.00171061
+        3       0.00074092    0.00166408   -0.00019425    0.0          -0.00268586
+        4      -0.00006593    0.00004794    0.00022013    0.00583572    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    0   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       0       4
+
+ Block  [    i    j   0   4 ]
+                      0             1             2             3             4   
+        0      -1.7287e-14    0.00021851    0.00002250   -0.00004566    0.00541013
+        1      -0.00169798   -0.00070615    0.00089414    0.00114830    0.00002845
+        2      -0.00017488    0.00176923    0.00135172    0.00008062   -0.00010996
+        3       0.00035483   -0.00004219   -0.00040157   -0.00064557   -0.00006593
+        4       0.00062135   -0.00022107    0.00085446    0.00051232   -1.8775e-14
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    1   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       1       4
+
+ Block  [    i    j   1   4 ]
+                      0             1             2             3             4   
+        0       0.00147948    0.00081044   -0.00124048   -0.00102638    0.00002845
+        1      -0.00010429    0.0          -0.00004750   -0.00000072    0.00541866
+        2       0.00092211    0.00036912   -0.00002954    0.00152578    0.00009019
+        3      -0.00090521    0.00000556    0.00032615   -0.00144993    0.00004794
+        4      -0.00022107    0.00055507   -0.00070081   -0.00037252    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    2   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       2       4
+
+ Block  [    i    j   2   4 ]
+                      0             1             2             3             4   
+        0       0.00015237   -0.00181625   -0.00155136    0.00002555   -0.00010996
+        1      -0.00052875   -0.00032162    0.00003390   -0.00145738    0.00009019
+        2       0.00019964   -0.00000436    0.0           0.00004638    0.00548701
+        3      -0.00042343   -0.00085771   -0.00036039    0.00016925    0.00022013
+        4       0.00085446   -0.00070081    0.00002391   -0.00171061    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    3   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       3       4
+
+ Block  [    i    j   3   4 ]
+                      0             1             2             3             4   
+        0      -0.00030916   -0.00024309    0.00034281    0.00074092   -0.00006593
+        1       0.00106858   -0.00000484   -0.00066808    0.00166408    0.00004794
+        2       0.00037603    0.00113122    0.00031401   -0.00019425    0.00022013
+        3      -0.00009535   -0.00021415    0.00002500    0.0           0.00583572
+        4       0.00051232   -0.00037252   -0.00171061   -0.00268586    0.0       
+   IrrepBlock ir(0)=0 ir(1)=0, SlowIdx blocks:    4   4
+   Sizes in current block:        5       5       1       1   -- offsets:        0       0       4       4
+
+ Block  [    i    j   4   4 ]
+                      0             1             2             3             4   
+        0       0.00315302    0.00019262   -0.00074450   -0.00044639   -1.8776e-14
+        1       0.00019262    0.00321078    0.00061062    0.00032458    0.0       
+        2      -0.00074450    0.00061062    0.00367358    0.00149048    0.0       
+        3      -0.00044639    0.00032458    0.00149048    0.00603464    0.0       
+        4      -1.8775e-14    0.0           0.0           0.0           0.00918450
+
+ ===========================================
+
+  DF-MP2-F12 energy corrections:
+  ==============================
+  Approx.                                    Total
+  DF-MP2-F12/3C(DX,FIX,NOZ):           -0.049359279797
+  DF-MP2-F12/3C(FIX,NOZ):              -0.078090612879
+
+  DF-MP2-F12 correlation energies:
+  ================================
+  Approx.                                    Ecorr
+  DF-MP2:                              -0.484454381626
+  DF-MP2-F12/3C(DX,FIX,NOZ):           -0.533813661423
+  DF-MP2-F12/3C(FIX,NOZ):              -0.562544994505
+
+  Reference energy                  -1638.726552059237
+  MP2-F12 correlation energy           -0.562544994505
+
+ !MP2-F12 total energy              -1639.289097053742
+
+
+
+
+
+ **********************************************************************************************************************************
+ DATASETS  * FILE   NREC   LENGTH (MB)   RECORD NAMES
+              1      18       29.36       500      610      700      900      950      970     1000      129      960     1100   
+                                          VAR    BASINP    GEOM    SYMINP    ZMAT    AOBASIS   BASIS     P2S    ABASIS      S 
+                                         1400     1410     1200     1210     1080     1600     1650     1700   
+                                           T        V       H0       H01     AOSYM     SMH    MOLCAS    OPER   
+
+              2       4        0.66       700     1000      520     2100   
+                                         GEOM     BASIS   MCVARS     RHF  
+
+ PROGRAMS   *        TOTAL   MP2-F12    DF-MP2     DF-HF       INT
+ CPU TIMES  *         4.27      2.64      0.11      0.77      0.60
+ REAL TIME  *         4.85 SEC
+ DISK USED  *       130.66 MB
+ **********************************************************************************************************************************
+ TOT_ENER(1)     =   -1639.28909705  AU                              
+ REF_ENER(1)     =   -1638.72655206  AU                              
+ CORR_ENER(1)    =      -0.56254499  AU                              
+
+
+   GEM_BETA       TOT_ENER       REF_ENER     CORR_ENER
+        2.4   -1639.289097   -1638.726552   -0.56254499
+                                                  
+
+ DF-MP2-F12/aug-cc-pVTZ energy=  -1639.289097053742
+
+      DF-MP2-F12          DF-MP2           DF-HF
+  -1639.28909705  -1639.21100637  -1638.72655206
+ **********************************************************************************************************************************
+ Molpro calculation terminated
