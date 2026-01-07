@@ -29,6 +29,10 @@ It needs to have only a `metadata.json` and a template input `*.tinp`
 
 `analyze_outs.ipynb` : For experimenting with and further developing `xml_output_parser.py`
 
+`simple_tensor_inspector.ipynb` : For simple illustration of reading output files for tensors.
+
+`tensor_output_reader.ipynb` : For analyzing differences in tensors from multiple output files.
+
 `xml_output_parser.py` : For parsing to get energy from xml outputs. Works only on:
 - standard and default xml files
 - **single point energy output files**, not ones containing multiple jobs, such as those with different gamma
